@@ -1,0 +1,45 @@
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: calc(100% - 20px);
+  height: 100%;
+  padding: 20px 0 0 20px;
+
+  .createForms {
+    width: calc(30% - 20px);
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 0 0;
+
+    .heroCreationForm {
+      margin: 0 0 20px 0;
+      background-color: rgb(215, 213, 213);
+    }
+    .addAbility {
+      background-color: rgb(215, 213, 213);
+    }
+  }
+
+  .filterList {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+
+    .heroFilter {
+      margin: 0 0 20px 0;
+      height: 15%;
+      background-color: rgb(215, 213, 213);
+    }
+
+    .heroList {
+      background-color: rgb(215, 213, 213);
+      height: 70%;
+      width: 100%;
+      overflow: auto;
+    }
+  }
+}
+

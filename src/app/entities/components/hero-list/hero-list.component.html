@@ -1,0 +1,24 @@
+<div class="list">
+  <div class="accordion">
+    <dx-accordion
+      #accordion
+      [dataSource]="receivedHeroes"
+      [collapsible]="false"
+      [multiple]="false"
+      [animationDuration]="300"
+      class="accordion-container"
+    >
+      <div *dxTemplate="let receivedHeroes of 'title'" class="demo-container">
+        <h1>{{ receivedHeroes.userName }} {{ receivedHeroes.userLevel }}</h1>
+      </div>
+      <div *dxTemplate="let receivedHeroes of 'item'">
+        <div>
+          <p>
+            <span>{{ receivedHeroes.userCapability }}</span>
+            <span>{{ receivedHeroes.userPower }}</span>
+          </p>
+        </div>
+      </div>
+    </dx-accordion>
+  </div>
+</div>

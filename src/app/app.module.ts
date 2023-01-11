@@ -1,16 +1,32 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AppComponent} from './app.component';
+import {HeroCreationFormComponent} from './entities/components/hero-creation-form/hero-creation-form.component';
+import {AddAbilityComponent} from './entities/components/add-ability/add-ability.component';
+import {HeroFilterComponent} from './entities/components/hero-filter/hero-filter.component';
+import {HeroListComponent} from './entities/components/hero-list/hero-list.component';
+import {DevExtremeModule} from 'devextreme-angular';
+import {Service} from "./entities/services/service";
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
-    AppComponent
+    AppComponent,
+    HeroCreationFormComponent,
+    AddAbilityComponent,
+    HeroFilterComponent,
+    HeroListComponent,
   ],
   imports: [
-    BrowserModule
+    HttpClientModule,
+    FormsModule,
+    BrowserModule,
+    DevExtremeModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [Service]
 })
-export class AppModule { }
+export class AppModule {
+}

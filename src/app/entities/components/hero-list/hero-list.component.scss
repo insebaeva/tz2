@@ -1,15 +1,106 @@
 :host {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
 
-  .list {
-    width: 90%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
+  .wrapper {
+    padding: 2% 2% 2% 2%;
+    width: 100%;
 
-    .accordion, .accordion-container {
+    ::ng-deep .dx-empty-message {
+      display: none;
+    }
 
+    .accordion-container {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+
+      ::ng-deep .dx-accordion-wrapper {
+        width: 100%;
+        background-color: rgb(215, 213, 213);
+        height: 100%;
+
+        ::ng-deep .dx-item {
+          background-color: white;
+          padding: 2% 2% 2% 2%;
+          margin: 0 0 2% 0;
+          height: 28%;
+
+          .demo-container-head {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            ::ng-deep h1 {
+              font-size: 15px;
+              margin: 0;
+            }
+
+            ::ng-deep h2 {
+              font-size: 15px;
+              margin: 0 5% 0 0;
+            }
+          }
+        }
+
+        ::ng-deep .dx-accordion-item-opened {
+          height: 45% !important;
+
+          ::ng-deep .dx-accordion-item-title {
+            height: 40%;
+          }
+
+          ::ng-deep .dx-accordion-item-body {
+            height: 60%;
+            padding: 0;
+            margin: 0;
+
+            ::ng-deep .demo-container-body-power,
+            ::ng-deep .demo-container-body-capabilities {
+              margin: 0 0 2% 0;
+
+              span {
+                background-color: #c4c4c4;
+                padding: 0.5%;
+              }
+            }
+
+            .demo-container-body-button {
+              display: flex;
+              flex-direction: row-reverse;
+              height: 25%;
+
+              .demo-container-body-button-edit {
+                background-color: #7984af;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                border-color: #7984af;
+                color: white;
+                width: 20%;
+              }
+            }
+          }
+        }
+
+        ::ng-deep .dx-item.dx-accordion-item.dx-accordion-item-closed {
+          height: 12% !important;
+
+          ::ng-deep .dx-accordion-item-title {
+            height: 40%;
+          }
+
+          ::ng-deep .dx-accordion-item-body {
+            width: 0%;
+            padding: 0;
+          }
+        }
+
+
+      }
     }
   }
 }

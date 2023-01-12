@@ -23,8 +23,14 @@
       border-radius: 5px;
       border-color: #989494;
     }
-    .form-control.ng-touched.ng-invalid {border:solid red 2px;}
-    .form-control.ng-touched.ng-valid {border:solid green 2px;}
+
+    .form-control.ng-invalid {
+      border: solid #e59898 2px;
+    }
+
+    .form-control.ng-valid {
+      border: solid #487e48 2px;
+    }
   }
 
   .button {

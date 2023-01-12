@@ -19,9 +19,6 @@ export class Service {
   public capabilitiesChanged$: Observable<string[]> = this._capabilitiesSubject$$.asObservable();
   public receivedHeroes: Hero[] = [];
   public heroes$$: BehaviorSubject<Hero[]> = new BehaviorSubject<Hero[]>(this.receivedHeroes);
-  // public capabilitiesChanged$:Observable<string> = new Observable((subscriber) => {
-  //  subscriber.next(this.capabilitiesSubject$.getValue());
-  // });
 
   constructor(private http: HttpClient) {
   }
@@ -29,13 +26,13 @@ export class Service {
 
   public getCapabilities(capability: string): void {
     this.capabilities.push(capability);
-    this._capabilitiesSubject$$.next([...this.capabilities, capability]);
+    this._capabilitiesSubject$$.next([...this.capabilities]);
   }
 
-  public postHeroes(myForm: FormGroup) {
+  public postHeroes(myForm: FormGroup): Observable<Hero> {
 
     const body: Hero = myForm.value;
-    return this.http.post('http://127.0.0.1:3000/items', body);
+    return this.http.post<Hero>('http://127.0.0.1:3000/items', body);
 
   }
 
@@ -43,7 +40,6 @@ export class Service {
   public getHero(): void {
     lastValueFrom(this.http.get<Hero[]>('http://127.0.0.1:3000/items'))
       .then(response => {
-        console.log(response)
         this.receivedHeroes = response;
         this.heroes$$.next(this.receivedHeroes)
       })

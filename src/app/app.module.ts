@@ -9,6 +9,7 @@ import {HeroListComponent} from './entities/components/hero-list/hero-list.compo
 import {DevExtremeModule} from 'devextreme-angular';
 import {Service} from "./entities/services/service";
 import {HttpClientModule} from '@angular/common/http';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -20,6 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
     HeroListComponent,
   ],
   imports: [
+    CommonModule,
     HttpClientModule,
     FormsModule,
     BrowserModule,

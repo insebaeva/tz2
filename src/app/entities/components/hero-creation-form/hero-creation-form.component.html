@@ -3,42 +3,38 @@
     <div class="createHero_name_text">Имя:</div>
     <dx-text-box class="form-control"
                  name="heroName"
-                 formControlName=userName
-                 required
+                 formControlName="heroName"
     ></dx-text-box>
   </div>
   <div class="form-group">
     <div class="createHero_power_text">Сила:</div>
     <dx-number-box class="form-control"
                    name="heroPower"
-                   formControlName=userPower
+                   formControlName="heroPower"
                    [value]="5"
-                   [min]="0"
+                   [min]="1"
                    [max]="100"
                    [showSpinButtons]="true"
-                   required
     ></dx-number-box>
   </div>
   <div class="form-group">
     <div class="createHero_capabilities_text">Способности:</div>
     <dx-select-box
       class="form-control"
-      formControlName=userCapabilities
+      formControlName="heroCapabilities"
       stylingMode="outlined"
       [dataSource]="receivedCapabilities"
-      required
     ></dx-select-box>
   </div>
   <div class="form-group">
     <div class="createHero_level_text">Начальный уровень:</div>
     <dx-number-box class="form-control"
                    name="heroLevel"
-                   formControlName=userLevel
+                   formControlName="heroLevel"
                    [value]="5"
-                   [min]="0"
+                   [min]="1"
                    [max]="100"
                    [showSpinButtons]="true"
-                   required
     ></dx-number-box>
   </div>
   <div class="form-group button">
@@ -51,4 +47,4 @@
     </dx-button>
   </div>
 </form>
-<!--[disabled]="heroName.invalid || heroPower.invalid || heroLevel.invalid || heroCapabilities.invalid"-->
+<!--[disabled]="myForm.invalid"-->

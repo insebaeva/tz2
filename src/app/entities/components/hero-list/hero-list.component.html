@@ -1,24 +1,31 @@
-<div class="list">
-  <div class="accordion">
-    <dx-accordion
-      #accordion
-      [dataSource]="receivedHeroes"
-      [collapsible]="false"
-      [multiple]="false"
-      [animationDuration]="300"
-      class="accordion-container"
-    >
-      <div *dxTemplate="let receivedHeroes of 'title'" class="demo-container">
-        <h1>{{ receivedHeroes.userName }} {{ receivedHeroes.userLevel }}</h1>
+<div class="wrapper">
+  <dx-accordion
+    class="accordion-container"
+    #accordion
+    [dataSource]="receivedHeroes"
+    [collapsible]="false"
+    [multiple]="false"
+    [animationDuration]="300"
+  >
+    <div *dxTemplate="let receivedHeroes of 'title'" class="demo-container">
+      <div class="demo-container-head">
+        <h1>{{ receivedHeroes.heroName }}</h1>
+        <h2>{{ receivedHeroes.heroLevel }} ур.</h2>
       </div>
-      <div *dxTemplate="let receivedHeroes of 'item'">
-        <div>
-          <p>
-            <span>{{ receivedHeroes.userCapability }}</span>
-            <span>{{ receivedHeroes.userPower }}</span>
-          </p>
-        </div>
+    </div>
+    <div *dxTemplate="let receivedHeroes of 'item'">
+      <div class="demo-container-body-content">
+        <p class="demo-container-body-power">
+          Сила: {{ receivedHeroes.heroPower }}
+        </p>
+        <p class="demo-container-body-capabilities">
+          Способности: <span>{{ receivedHeroes.heroCapabilities }}</span>
+        </p>
       </div>
-    </dx-accordion>
-  </div>
+      <div class="demo-container-body-button">
+        <button class="demo-container-body-button-edit">Редактировать</button>
+      </div>
+    </div>
+  </dx-accordion>
 </div>
+

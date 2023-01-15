@@ -1,16 +1,24 @@
+
 :host {
+  display: flex;
+  flex-direction: column;
+
 
   .dx-fieldset {
     display: flex;
     flex-direction: column;
-    margin: 20px 10px;
+    margin: 0;
+
 
     .dx-field {
       display: flex;
       flex-direction: column;
       margin: 0;
 
-      &-label {
+      &-label-name,
+      &-label-power,
+      &-label-capabilities,
+      &-label-level {
         width: 100%;
         display: flex;
         padding: 8px;
@@ -21,7 +29,9 @@
         display: flex;
         padding: 8px;
 
-        dx-text-box {
+        dx-text-box,
+        dx-number-box,
+        dx-tag-box {
           width: 100%;
 
 
@@ -40,10 +50,5 @@
     }
   }
 
-
 }
-
-
-
-
 

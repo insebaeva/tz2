@@ -6,10 +6,11 @@ import {HeroCreationFormComponent} from './entities/components/hero-creation-for
 import {AddAbilityComponent} from './entities/components/add-ability/add-ability.component';
 import {HeroFilterComponent} from './entities/components/hero-filter/hero-filter.component';
 import {HeroListComponent} from './entities/components/hero-list/hero-list.component';
-import {DevExtremeModule} from 'devextreme-angular';
+import {DevExtremeModule, DxToolbarModule} from 'devextreme-angular';
 import {Service} from "./entities/services/service";
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from "@angular/common";
+import { HeroEditComponent } from './entities/components/hero-edit/hero-edit.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -19,6 +20,7 @@ import {CommonModule} from "@angular/common";
     AddAbilityComponent,
     HeroFilterComponent,
     HeroListComponent,
+    HeroEditComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import {CommonModule} from "@angular/common";
     BrowserModule,
     DevExtremeModule,
     ReactiveFormsModule,
+    DxToolbarModule
   ],
   providers: [Service]
 })

@@ -1,7 +1,10 @@
+import {HeroEnum} from "../enums/hero.enum";
+
 export interface Hero {
-  name: string,
-  power: number,
-  capabilities: string,
-  level: number,
+  [HeroEnum.NAME]: string;
+  [HeroEnum.POWER]: number;
+  [HeroEnum.CAPABILITY_IDS]: string[];
+  [HeroEnum.LEVEL]: number;
+  [HeroEnum.ID]: number;
 }
 

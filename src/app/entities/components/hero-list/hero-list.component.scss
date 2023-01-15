@@ -5,17 +5,19 @@
   justify-content: center;
 
   .wrapper {
-    padding: 2% 2% 2% 2%;
+    margin: 20px 10px;
+    padding: 8px;
     width: 100%;
 
     ::ng-deep .dx-empty-message {
       display: none;
     }
 
-    .accordion-container {
+    .dx-fieldset {
       display: flex;
       justify-content: center;
       height: 100%;
+      margin: 0;
 
       ::ng-deep .dx-accordion-wrapper {
         width: 100%;
@@ -23,85 +25,152 @@
         height: 100%;
 
         ::ng-deep .dx-item {
+          height: 15%;
           background-color: white;
-          padding: 2% 2% 2% 2%;
-          margin: 0 0 2% 0;
-          height: 28%;
+          padding: 10px 32px;
+          margin: 0 0 28px 0;
+          display: flex;
+          flex-direction: column;
 
-          .demo-container-head {
+          .dx-field-head {
             display: flex;
-            flex-direction: row;
+            flex-direction: row-reverse;
             justify-content: space-between;
+            width: 100%;
+            padding: 0;
 
-            ::ng-deep h1 {
+            ::ng-deep .dx-field-name-value {
               font-size: 15px;
               margin: 0;
+              padding: 0;
+              width: 40%;
             }
 
-            ::ng-deep h2 {
+            ::ng-deep .dx-field-level-value {
               font-size: 15px;
-              margin: 0 5% 0 0;
+              margin: 0 16px 0 0;
+              padding: 0;
+              width: 40%;
             }
           }
         }
 
         ::ng-deep .dx-accordion-item-opened {
-          height: 45% !important;
+          height: 50% !important;
 
           ::ng-deep .dx-accordion-item-title {
-            height: 40%;
+            width: 100%;
+            height: 20%;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
           }
 
           ::ng-deep .dx-accordion-item-body {
-            height: 60%;
+            height: 80%;
             padding: 0;
             margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 16px 0;
 
-            ::ng-deep .demo-container-body-power,
-            ::ng-deep .demo-container-body-capabilities {
-              margin: 0 0 2% 0;
+            .dx-field-body-power {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
 
-              span {
-                background-color: #c4c4c4;
-                padding: 0.5%;
+              .dx-field-body-power-label {
+                padding: 0;
+                margin: 0;
+              }
+
+              .dx-field-body-power-value {
+                padding: 0;
+                margin: 0 2px;
               }
             }
 
-            .demo-container-body-button {
+            .dx-field-body-capabilities {
               display: flex;
-              flex-direction: row-reverse;
-              height: 25%;
+              flex-direction: row;
+              justify-content: flex-start;
 
-              .demo-container-body-button-edit {
-                background-color: #7984af;
+              .dx-field-body-capabilities-label {
+                padding: 2px 0;
+                margin: 0;
+              }
+
+              .dx-field-body-capabilities-value {
+                padding: 0;
+                margin: 0;
                 display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 5px;
-                border-color: #7984af;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                .capability {
+                  margin: 2px 2px;
+                  background-color: #d0cece;
+                }
+              }
+            }
+
+            .dx-button {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-end;
+              border: none;
+              padding: 0;
+
+              .dx-button-content {
+                background-color: #6d8cad;
                 color: white;
-                width: 20%;
+                border-radius: 5px;
               }
             }
           }
         }
 
-        ::ng-deep .dx-item.dx-accordion-item.dx-accordion-item-closed {
-          height: 12% !important;
+        ::ng-deep .dx-accordion-item-closed {
+          height: 15% !important;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-          ::ng-deep .dx-accordion-item-title {
-            height: 40%;
+          .dx-field-head {
+            display: flex;
+            flex-direction: row-reverse;
+            width: 100%;
+            padding: 0;
+
+            ::ng-deep .dx-field-name-value {
+              font-size: 15px;
+              margin: 0;
+              padding: 0;
+              width: 40%;
+            }
+
+            ::ng-deep .dx-field-level-value {
+              font-size: 15px;
+              margin: 0 16px 0 0;
+              padding: 0;
+              width: 40%;
+            }
           }
 
-          ::ng-deep .dx-accordion-item-body {
-            width: 0%;
+          .dx-field-body {
+            height: 0;
             padding: 0;
           }
         }
-
 
       }
     }
   }
 }
+
+
+
+
+
 

@@ -1,31 +1,56 @@
 <div class="wrapper">
   <dx-accordion
-    class="accordion-container"
-    #accordion
-    [dataSource]="receivedHeroes"
+    class="dx-fieldset"
+    [dataSource]="heroes"
     [collapsible]="false"
     [multiple]="false"
     [animationDuration]="300"
   >
-    <div *dxTemplate="let receivedHeroes of 'title'" class="demo-container">
-      <div class="demo-container-head">
-        <h1>{{ receivedHeroes.heroName }}</h1>
-        <h2>{{ receivedHeroes.heroLevel }} ур.</h2>
+    <div *dxTemplate="let hero of 'title'" class="dx-field-head">
+      <div class="dx-field-level-value">
+        {{ hero.level }} ур.
+      </div>
+      <div class="dx-field-name-value">
+        {{ hero.name }}
       </div>
     </div>
-    <div *dxTemplate="let receivedHeroes of 'item'">
-      <div class="demo-container-body-content">
-        <p class="demo-container-body-power">
-          Сила: {{ receivedHeroes.heroPower }}
-        </p>
-        <p class="demo-container-body-capabilities">
-          Способности: <span>{{ receivedHeroes.heroCapabilities }}</span>
-        </p>
+    <div *dxTemplate="let hero of 'item'" class="dx-field-body">
+      <div class="dx-field-body-power">
+        <p class="dx-field-body-power-label">Сила: </p>
+        <div class="dx-field-body-power-value"> {{ hero.power }} </div>
       </div>
-      <div class="demo-container-body-button">
-        <button class="demo-container-body-button-edit">Редактировать</button>
+      <div class="dx-field-body-capabilities">
+        <p class="dx-field-body-capabilities-label">Способности:</p>
+        <div class="dx-field-body-capabilities-value">
+          <div class="capability"
+               *ngFor="let capabilities of hero.capabilityIds">
+            {{capabilities}}
+          </div>
+        </div>
+      </div>
+      <div class="dx-button">
+        <dx-button class="dx-button-content"
+                   class="createHero_button_text"
+                   stylingMode="contained"
+                   text="Редактировать героя"
+                   type="normal"
+                   (onClick)="editHero(hero)"
+        ></dx-button>
       </div>
     </div>
   </dx-accordion>
 </div>
 
+<dx-popup
+  [width]="500"
+  [height]="500"
+  [showTitle]="true"
+  title="Редактирование героя"
+  [dragEnabled]="false"
+  [hideOnOutsideClick]="true"
+  [showCloseButton]="true"
+  container=".dx-viewport"
+  [(visible)]="popupVisible"
+>
+  <app-hero-edit></app-hero-edit>
+</dx-popup>

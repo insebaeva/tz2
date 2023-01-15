@@ -10,17 +10,30 @@ import {Hero} from 'src/app/entities/interfaces/heroes'
 
 export class HeroListComponent implements OnInit {
 
-  public receivedHeroes: Hero[] = [];
+  public heroes: Hero[] = [];
+  public popupVisible: boolean = false;
 
-  constructor(private readonly service: Service) {
+  constructor(private readonly _service: Service) {
+
   }
 
-  ngOnInit() {
-    this.service.getHero()
-    this.service.heroes$$.subscribe((receivedHeroes) => {
-        this.receivedHeroes = receivedHeroes;
-      }
-    )
+  /**
+   * Получение героев с сервера
+   */
+  public ngOnInit(): void {
+    this._service.getHeroes();
+    this._service.heroes$$.subscribe((heroes: Hero[]) => {
+      this.heroes = heroes;
+    });
   }
+
+  /**
+   * Отправка выбранного героя на сервис
+   * @param selectedHero выбранный герой
+   */
+  public editHero(selectedHero: Hero) {
+    this.popupVisible = true;
+    this._service.setSelectedHero(selectedHero);
+  };
 
 }

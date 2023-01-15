@@ -1,15 +1,23 @@
-<div class="addAbility">
-  <p class="addAbility_text">Добавление способностей</p>
-  <div class="form-group">
-    <dx-text-box class="form-control" [formControl]="heroCapability"
-    ></dx-text-box>
+<div class="dx-fieldset">
+  <div class="dx-field">
+    <div class="dx-field-label">Добавление способностей</div>
+    <div class="dx-field-value">
+      <dx-text-box [formControl]="capability"
+                   class="form-control"
+      ></dx-text-box>
+    </div>
   </div>
-  <div class="form-group button">
-    <dx-button class="form-control"
-               stylingMode="contained"
-               text="Добавить способность"
-               type="normal"
-               (onClick)="addCapability()"
-    ></dx-button>
-  </div>
+  <dx-toolbar class="dx-button">
+    <dxi-item [options]="{
+              text: 'Добавить способность',
+              type: 'default',
+              stylingMode: 'contained',
+              disabled: capability.invalid,
+              onClick: addCapability
+            }"
+              location="after"
+              widget="dxButton"
+    ></dxi-item>
+  </dx-toolbar>
 </div>
+

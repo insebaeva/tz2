@@ -1,4 +1,0 @@
-enum ButtonCreate {
-  false,
-  true,
-}

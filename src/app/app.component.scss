@@ -13,12 +13,12 @@
     flex-direction: column;
     margin: 0 20px 0 0;
 
-    .heroCreationForm {
+    app-hero-creation-form {
       margin: 0 0 20px 0;
       background-color: rgb(215, 213, 213);
     }
 
-    .addAbility {
+    app-add-ability {
       background-color: rgb(215, 213, 213);
     }
   }
@@ -29,18 +29,19 @@
     width: 60%;
     height: 100%;
 
-    .heroFilter {
+    app-hero-filter {
       margin: 0 0 20px 0;
       height: 15%;
       background-color: rgb(215, 213, 213);
     }
 
-    .heroList {
+    app-hero-list {
       background-color: rgb(215, 213, 213);
-      height: 70%;
+      height: 73.2%;
       width: 100%;
       overflow: auto;
     }
   }
+
 }
 

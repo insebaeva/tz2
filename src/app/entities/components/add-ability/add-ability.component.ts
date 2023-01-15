@@ -8,29 +8,20 @@ import {FormControl, Validators} from "@angular/forms";
   templateUrl: './add-ability.component.html',
   styleUrls: ['./add-ability.component.scss'],
 })
-export class AddAbilityComponent implements OnInit {
+export class AddAbilityComponent {
+  public capability: FormControl = new FormControl(null, Validators.required);
 
-  private _receivedCapabilities: string[] = [];
-  public heroCapability: FormControl = new FormControl(null, Validators.required)
-
-  constructor(private readonly service: Service) {
+  constructor(private readonly _service: Service) {
   }
 
-  ngOnInit() {
-    this.service.capabilitiesChanged$.subscribe(capabilities => {
-      this._receivedCapabilities = capabilities;
-    })
-  }
-
-  public addCapability(): void {
-    if (this.heroCapability.invalid) {
-      alert("Данные введены некорректно")
-    } else {
-      this.service.getCapabilities(this.heroCapability.value);
-      this.heroCapability.setValue("");
-      alert("Способность добавлена!")
-    }
-  }
+  /**
+   * Добавление способности
+   */
+  public addCapability = () => {
+    this._service.addCapability(this.capability.value);
+    this.capability.setValue('');
+    alert("Способность добавлена!");
+  };
 }
 
 

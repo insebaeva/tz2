@@ -3,24 +3,24 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {HeroCreationFormComponent} from './entities/components/hero-creation-form/hero-creation-form.component';
-import {AddAbilityComponent} from './entities/components/add-ability/add-ability.component';
-import {HeroFilterComponent} from './entities/components/hero-filter/hero-filter.component';
+import {CapabilityCreationComponent} from './entities/components/capability-creation/capability-creation.component';
+import {HeroFilterFormComponent} from './entities/components/hero-filter-form/hero-filter-form.component';
 import {HeroListComponent} from './entities/components/hero-list/hero-list.component';
 import {DevExtremeModule, DxToolbarModule} from 'devextreme-angular';
-import {Service} from "./entities/services/service";
+import {AppService} from "./entities/services/app.service";
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from "@angular/common";
-import { HeroEditComponent } from './entities/components/hero-edit/hero-edit.component';
+import {HeroEditDialogComponent} from './entities/components/hero-edit-dialog/hero-edit-dialog.component';
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     HeroCreationFormComponent,
-    AddAbilityComponent,
-    HeroFilterComponent,
+    CapabilityCreationComponent,
+    HeroFilterFormComponent,
     HeroListComponent,
-    HeroEditComponent,
+    HeroEditDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +31,7 @@ import { HeroEditComponent } from './entities/components/hero-edit/hero-edit.com
     ReactiveFormsModule,
     DxToolbarModule
   ],
-  providers: [Service]
+  providers: [AppService]
 })
 export class AppModule {
 }

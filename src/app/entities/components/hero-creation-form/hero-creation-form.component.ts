@@ -1,52 +1,63 @@
 import {Component, OnInit} from '@angular/core';
-import {Service} from "src/app/entities/services/service";
-import {Hero} from 'src/app/entities/interfaces/heroes';
-import {FormGroup, FormControl, Validators} from "@angular/forms";
+import {AppService} from "src/app/entities/services/app.service";
+import {FormGroup} from "@angular/forms";
 import {HeroEnum} from "../../enums/hero.enum";
+import {IdName} from "../../interfaces/id-name.interface";
+import {AppLib} from "../../libs/app.lib";
+import {AppFormBuilderService} from "../../services/app-form-builder.service";
+import {AppComponentClass} from "../../classes/app-component.class";
+import {filter} from "rxjs";
+import {Hero} from "../../interfaces/hero.interface";
 
 @Component({
   selector: 'app-hero-creation-form',
   templateUrl: './hero-creation-form.component.html',
   styleUrls: ['./hero-creation-form.component.scss'],
 })
-export class HeroCreationFormComponent implements OnInit {
-  public selectedHero: Hero | undefined;
-  public capabilities: string[] = [];
-  public heroForm: FormGroup = new FormGroup({
-    [HeroEnum.NAME]: new FormControl('', Validators.required),
-    [HeroEnum.POWER]: new FormControl(1, Validators.required),
-    [HeroEnum.CAPABILITY_IDS]: new FormControl([], Validators.required),
-    [HeroEnum.LEVEL]: new FormControl(1, Validators.required),
-  });
+export class HeroCreationFormComponent extends AppComponentClass implements OnInit {
+  public heroFormGroup: FormGroup = this._appFormBuilderService.getDefaultHeroFormGroup();
+
+  public capabilities: IdName[] = [];
 
   public HERO: typeof HeroEnum = HeroEnum;
 
-  constructor(private readonly _service: Service) {
+  constructor(
+    private readonly _appService: AppService,
+    private readonly _appFormBuilderService: AppFormBuilderService,
+  ) {
+    super();
+  }
+
+  public ngOnInit(): void {
+    this._getCapabilities()
   }
 
   /**
-   * Получение добавленной способности
+   * Получение способностей
+   * @private
    */
-  public ngOnInit(): void {
-    this._service.capabilities$.subscribe((capabilities: string[]) => {
-      this.capabilities = capabilities;
-    });
+  private _getCapabilities(): void {
+    this._observeSafe(this._appService.capabilities$)
+      .pipe(
+        filter((capabilities: IdName[]) => !!capabilities)
+      )
+      .subscribe((capabilities: IdName[]) => {
+        this.capabilities = capabilities;
+      });
   }
 
   /**
    * Создание героя
    */
   public createHero = () => {
-    this._service.addHero(this.heroForm.value)
-      .subscribe({
-        next: (response) => {
-          this.selectedHero = response;
-        },
-        error: error => console.log(error),
+    this._appService.addHero(this.heroFormGroup.value)
+      .then((addedHero: Hero | null) => {
+        if (addedHero) {
+          alert('Герой добавлен!');
+          this.heroFormGroup.patchValue(AppLib.defaultHero);
+          this._appService.getHeroes();
+        }
       });
-    alert("Герой добавлен!");
-    this.heroForm.patchValue(Service.defaultHero);
-    this._service.getHeroes();
   };
 }
 

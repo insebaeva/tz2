@@ -2,14 +2,10 @@
 
 :host {
   @include backgroundColor;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
 
   .dx-fieldset {
     @include dxFieldSet;
     margin: 20px 10px;
-
 
     .dx-field {
       @include dxField;
@@ -26,7 +22,9 @@
     }
   }
 
+
 }
+
 
 
 

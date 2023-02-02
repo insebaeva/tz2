@@ -1,19 +1,21 @@
+@import "src/assets/styles/mixin";
+
 :host {
+  @include backgroundColor;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
 
   .wrapper {
-    margin: 20px 10px;
-    padding: 8px;
+    padding: 28px 18px;
     width: 100%;
 
     ::ng-deep .dx-empty-message {
       display: none;
     }
 
-    .dx-fieldset {
+    .accordion {
       display: flex;
       justify-content: center;
       height: 100%;
@@ -68,7 +70,6 @@
 
           ::ng-deep .dx-accordion-item-body {
             height: 80%;
-            padding: 0;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -115,17 +116,24 @@
               }
             }
 
-            .dx-button {
+            .dx-buttons {
               display: flex;
               flex-direction: row;
-              justify-content: flex-end;
+              justify-content: space-between;
               border: none;
               padding: 0;
 
-              .dx-button-content {
+              .dx-button-edit {
                 background-color: #6d8cad;
                 color: white;
                 border-radius: 5px;
+                width: 200px;
+              }
+              .dx-button-delete {
+                background-color: #6d8cad;
+                color: white;
+                border-radius: 5px;
+                width: 200px;
               }
             }
           }

@@ -1,44 +1,45 @@
-<form class="dx-fieldset" [formGroup]="heroForm">
+<form class="dx-fieldset" [formGroup]="heroFormGroup">
   <div class="dx-field">
     <div class="dx-field-label-name">Имя:</div>
     <div class="dx-field-value">
-      <dx-text-box class="form-control"
-                   [formControlName]="HERO.NAME"
+      <dx-text-box [formControlName]="HERO.NAME"
+                   class="form-control"
       ></dx-text-box>
     </div>
   </div>
   <div class="dx-field">
     <div class="dx-field-label-power">Сила:</div>
     <div class="dx-field-value">
-      <dx-number-box class="form-control"
-                     [formControlName]="HERO.POWER"
+      <dx-number-box [formControlName]="HERO.POWER"
                      [value]="5"
                      [min]="1"
                      [max]="100"
                      [showSpinButtons]="true"
+                     class="form-control"
       ></dx-number-box>
     </div>
   </div>
   <div class="dx-field">
     <div class="dx-field-label-capabilities">Способности:</div>
     <div class="dx-field-value">
-      <dx-tag-box
-        class="form-control"
-        [formControlName]="HERO.CAPABILITY_IDS"
-        stylingMode="outlined"
-        [items]="capabilities"
+      <dx-tag-box [formControlName]="HERO.CAPABILITY_IDS"
+                  [dataSource]="capabilities"
+                  stylingMode="outlined"
+                  valueExpr="id"
+                  displayExpr="name"
+                  class="form-control"
       ></dx-tag-box>
     </div>
   </div>
   <div class="dx-field">
     <div class="dx-field-label-level">Начальный уровень:</div>
     <div class="dx-field-value">
-      <dx-number-box class="form-control"
-                     [formControlName]="HERO.LEVEL"
+      <dx-number-box [formControlName]="HERO.LEVEL"
                      [value]="5"
                      [min]="1"
                      [max]="100"
                      [showSpinButtons]="true"
+                     class="form-control"
       ></dx-number-box>
     </div>
   </div>

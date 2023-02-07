@@ -9,3 +9,11 @@ html, body, app-root, .dx-field {
   width: 100%;
 }
 
+.dx-icon-eye {
+  background-position: 0 0;
+  background-repeat: no-repeat;
+
+  &::before {
+    content: url("~src/assets/icons/eye-regular.svg");
+  }
+}

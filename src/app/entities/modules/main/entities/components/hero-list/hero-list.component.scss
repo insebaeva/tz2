@@ -1,0 +1,203 @@
+@import "../../../../../../../assets/styles/mixin";
+
+:host {
+  @include backgroundColor;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  .wrapper {
+    padding: 28px 18px;
+    width: 100%;
+
+    ::ng-deep .dx-empty-message {
+      display: none;
+    }
+
+    .accordion {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      margin: 0;
+
+      ::ng-deep .dx-accordion-wrapper {
+        width: 100%;
+        background-color: rgb(215, 213, 213);
+        height: 100%;
+
+        ::ng-deep .dx-item {
+          height: 15%;
+          background-color: white;
+          padding: 10px 32px;
+          margin: 0 0 28px 0;
+          display: flex;
+          flex-direction: column;
+
+          .dx-field-head {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0;
+
+            ::ng-deep .dx-field-name-value {
+              font-size: 15px;
+              margin: 0;
+              padding: 0;
+              width: 40%;
+            }
+
+            ::ng-deep .dx-field-level-value {
+              font-size: 15px;
+              margin: 0 16px 0 0;
+              padding: 0;
+              width: 40%;
+            }
+          }
+        }
+
+        ::ng-deep .dx-accordion-item-opened {
+          height: 50% !important;
+
+          ::ng-deep .dx-accordion-item-title {
+            width: 100%;
+            height: 20%;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+          }
+
+          ::ng-deep .dx-accordion-item-body {
+            height: 80%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 16px 0;
+
+            .dx-field-body-power {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+
+              .dx-field-body-power-label {
+                padding: 0;
+                margin: 0;
+              }
+
+              .dx-field-body-power-value {
+                padding: 0;
+                margin: 0 2px;
+              }
+            }
+
+            .dx-field-body-capabilities {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+
+              .dx-field-body-capabilities-label {
+                padding: 2px 0;
+                margin: 0;
+              }
+
+              .dx-field-body-capabilities-value {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                .capability {
+                  margin: 2px 2px;
+                  background-color: #d0cece;
+                }
+              }
+            }
+
+            .dx-buttons {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              border: none;
+              padding: 0;
+
+              .dx-button-edit {
+                background-color: #6d8cad;
+                color: white;
+                border-radius: 5px;
+                width: 200px;
+              }
+
+              .dx-button-delete {
+                background-color: #6d8cad;
+                color: white;
+                border-radius: 5px;
+                width: 200px;
+              }
+            }
+          }
+        }
+
+        ::ng-deep .dx-accordion-item-closed {
+          height: 15% !important;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .dx-field-head {
+            display: flex;
+            flex-direction: row-reverse;
+            width: 100%;
+            padding: 0;
+
+            ::ng-deep .dx-field-name-value {
+              font-size: 15px;
+              margin: 0;
+              padding: 0;
+              width: 40%;
+            }
+
+            ::ng-deep .dx-field-level-value {
+              font-size: 15px;
+              margin: 0 16px 0 0;
+              padding: 0;
+              width: 40%;
+            }
+          }
+
+          .dx-field-body {
+            height: 0;
+            padding: 0;
+          }
+        }
+
+      }
+    }
+  }
+
+  .dx-buttons-confirm {
+    .dx-buttons {
+      padding: 8px;
+      background-color: transparent;
+      border: none;
+      display: flex;
+      justify-content: center;
+
+      ::ng-deep .dx-button-mode-contained.dx-button-default {
+        background-color: black;
+      }
+    }
+  }
+}
+
+hero-edit-dialog {
+  background-color: white;
+}
+
+
+
+
+
+

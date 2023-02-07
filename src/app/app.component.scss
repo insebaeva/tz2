@@ -1,39 +1,13 @@
 .wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: calc(100% - 20px);
+  width: 80%;
   height: 100%;
-  padding: 20px 0 0 20px;
+  padding: 20px;
+  margin: auto;
 
-  &-before {
-    width: calc(30% - 20px);
+  main-page-switcher {
     display: flex;
-    flex-direction: column;
-    margin: 0 20px 0 0;
-
-    app-hero-creation-form {
-      margin: 0 0 20px 0;
-    }
-  }
-
-  &-after {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    height: 100%;
-
-    app-hero-filter-form {
-      margin: 0 0 20px 0;
-      height: 15%;
-    }
-
-    app-hero-list {
-      height: 73.2%;
-      width: 100%;
-      overflow: auto;
-    }
+    height: 10%;
+    margin: 0 0 20px 0;
   }
 
 }
-

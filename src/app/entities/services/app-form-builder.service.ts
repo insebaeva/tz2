@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {HeroEnum} from "../enums/hero.enum";
-import {HeroFilterFormEnum} from "../enums/hero-filter-form.enum";
+import {HeroEnum} from "../modules/main/entities/enums/hero.enum";
+import {HeroFilterFormEnum} from "../modules/main/entities/enums/hero-filter-form.enum";
 
 @Injectable({
   providedIn: "root"
@@ -20,21 +20,21 @@ export class AppFormBuilderService {
 
   public getDefaultHeroFormGroup(): FormGroup {
     return this._formBuilder.group({
-      [HeroEnum.NAME]: new FormControl('', Validators.required),
-      [HeroEnum.POWER]: new FormControl(1, Validators.required),
-      [HeroEnum.CAPABILITY_IDS]: new FormControl([], Validators.required),
-      [HeroEnum.LEVEL]: new FormControl(1, Validators.required),
-      [HeroEnum.ID]: new FormControl(0, Validators.required),
+      [HeroEnum.NAME]: this._formBuilder.control('', Validators.required),
+      [HeroEnum.POWER]: this._formBuilder.control(1, Validators.required),
+      [HeroEnum.CAPABILITY_IDS]: this._formBuilder.control([], Validators.required),
+      [HeroEnum.LEVEL]: this._formBuilder.control(1, Validators.required),
+      [HeroEnum.ID]: this._formBuilder.control(0, Validators.required),
     })
   }
 
   public getDefaultFilterFormGroup(): FormGroup {
     return this._formBuilder.group({
-      [HeroFilterFormEnum.MIN_LEVEL]: new FormControl(),
-      [HeroFilterFormEnum.MAX_LEVEL]: new FormControl(),
-      [HeroFilterFormEnum.NAME]: new FormControl(''),
-      [HeroFilterFormEnum.CAPABILITY_IDS]: new FormControl([]),
-      [HeroFilterFormEnum.IS_SORT_BY_LEVEL]: new FormControl(false),
+      [HeroFilterFormEnum.MIN_LEVEL]: this._formBuilder.control(1),
+      [HeroFilterFormEnum.MAX_LEVEL]: this._formBuilder.control(null),
+      [HeroFilterFormEnum.NAME]: this._formBuilder.control(''),
+      [HeroFilterFormEnum.CAPABILITY_IDS]: this._formBuilder.control([]),
+      [HeroFilterFormEnum.IS_SORT_BY_LEVEL]: this._formBuilder.control(false),
     })
   }
 }

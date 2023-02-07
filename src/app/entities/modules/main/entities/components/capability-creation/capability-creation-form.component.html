@@ -1,0 +1,26 @@
+<div class="dx-fieldset">
+  <div class="dx-field">
+    <div class="dx-field-label">
+      Добавление способностей
+    </div>
+    <div class="dx-field-value">
+      <dx-text-box [formControl]="capabilityFormControl"
+                   placeholder="Введите наименование способности..."
+                   class="form-control"
+      ></dx-text-box>
+    </div>
+  </div>
+  <dx-toolbar class="dx-button">
+    <dxi-item [options]="{
+                text: 'Добавить способность',
+                type: 'default',
+                stylingMode: 'contained',
+                disabled: capabilityFormControl.invalid,
+                onClick: addCapability
+              }"
+              location="after"
+              widget="dxButton"
+    ></dxi-item>
+  </dx-toolbar>
+</div>
+

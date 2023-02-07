@@ -1,0 +1,78 @@
+<div class="wrapper">
+  <dx-accordion [dataSource]="filteredHeroes"
+                [collapsible]="true"
+                [multiple]="true"
+                [animationDuration]="300"
+                class="accordion">
+    <div *dxTemplate="let hero of 'title'"
+         class="dx-field-head">
+      <div class="dx-field-level-value">
+        {{ hero.level }} ур.
+      </div>
+      <div class="dx-field-name-value">
+        {{ hero.name }}
+      </div>
+    </div>
+    <div *dxTemplate="let hero of 'item'"
+         class="dx-field-body">
+      <div class="dx-field-body-power">
+        <p class="dx-field-body-power-label">Сила: </p>
+        <div class="dx-field-body-power-value"> {{ hero.power }} </div>
+      </div>
+      <div class="dx-field-body-capabilities">
+        <p class="dx-field-body-capabilities-label">Способности:</p>
+        <div class="dx-field-body-capabilities-value">
+          <div *ngFor="let id of hero.capabilityIds"
+               class="capability">
+            {{ getCapabilityNameById(id) }}
+          </div>
+        </div>
+      </div>
+      <div class="dx-buttons">
+        <dx-button (onClick)="editHero(hero)"
+                   stylingMode="contained"
+                   text="Редактировать героя"
+                   type="normal"
+                   class="dx-button-edit"
+        ></dx-button>
+        <dx-button (onClick)="showHero(hero)"
+                   stylingMode="contained"
+                   text="Просмотр героя"
+                   type="normal"
+                   class="dx-button-delete"
+        ></dx-button>
+        <dx-button (onClick)="showDeleteConfirmationHero(hero)"
+                   stylingMode="contained"
+                   text="Удалить героя"
+                   type="normal"
+                   class="dx-button-delete"
+        ></dx-button>
+      </div>
+    </div>
+  </dx-accordion>
+</div>
+<dx-popup [width]="500"
+          [height]="500"
+          [showTitle]="true"
+          [dragEnabled]="false"
+          [hideOnOutsideClick]="true"
+          [showCloseButton]="true"
+          [title]="titleEdit"
+          [(visible)]="visibleEditDialog"
+          container=".dx-viewport">
+  <hero-edit-dialog [dialogMode]="editDialogMode"
+                    (close)="closeEditDialog()"
+  ></hero-edit-dialog>
+</dx-popup>
+<dx-popup [showTitle]="false"
+          [width]="300"
+          [height]="130"
+          [(visible)]="visibleDeleteDialog"
+          [hideOnOutsideClick]="false"
+          [showCloseButton]="true"
+          container=".dx-viewport">
+  <delete-confirmation-dialog [text]="titleConfirmationDeletion"
+                             (delete)="deleteHero()"
+                             (close)="closeDeleteDialog()"
+  ></delete-confirmation-dialog>
+</dx-popup>

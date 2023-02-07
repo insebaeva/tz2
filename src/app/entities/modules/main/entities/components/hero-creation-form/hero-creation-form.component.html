@@ -1,0 +1,68 @@
+<form class="dx-fieldset" [formGroup]="heroFormGroup">
+  <div class="dx-field">
+    <div class="dx-field-label-name">
+      Имя:
+    </div>
+    <div class="dx-field-value">
+      <dx-text-box [formControlName]="HERO.NAME"
+                   placeholder="Введите имя..."
+                   class="form-control"
+      ></dx-text-box>
+    </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label-power">
+      Сила:
+    </div>
+    <div class="dx-field-value">
+      <dx-number-box [formControlName]="HERO.POWER"
+                     [value]="5"
+                     [min]="1"
+                     [max]="100"
+                     [showSpinButtons]="true"
+                     class="form-control"
+      ></dx-number-box>
+    </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label-capabilities">
+      Способности:
+    </div>
+    <div class="dx-field-value">
+      <dx-tag-box [formControlName]="HERO.CAPABILITY_IDS"
+                  [dataSource]="capabilities"
+                  valueExpr="id"
+                  displayExpr="name"
+                  stylingMode="outlined"
+                  placeholder="Выберите способности..."
+                  class="form-control"
+      ></dx-tag-box>
+    </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label-level">
+      Начальный уровень:
+    </div>
+    <div class="dx-field-value">
+      <dx-number-box [formControlName]="HERO.LEVEL"
+                     [value]="5"
+                     [min]="1"
+                     [max]="100"
+                     [showSpinButtons]="true"
+                     class="form-control"
+      ></dx-number-box>
+    </div>
+  </div>
+  <dx-toolbar class="dx-button">
+    <dxi-item [options]="{
+                text: 'Создать героя',
+                type: 'default',
+                stylingMode: 'contained',
+                disabled: heroFormGroup.invalid,
+                onClick: createHero
+              }"
+              location="after"
+              widget="dxButton"
+    ></dxi-item>
+  </dx-toolbar>
+</form>

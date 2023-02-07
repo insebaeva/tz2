@@ -1,0 +1,23 @@
+<div class="dx-buttons-confirm">
+  <p>{{ text }}</p>
+  <dx-toolbar class="dx-buttons">
+    <dxi-item [options]="{
+                text: 'Да',
+                type: 'default',
+                stylingMode: 'contained',
+                onClick: deleteHero
+              }"
+              location="after"
+              widget="dxButton"
+    ></dxi-item>
+    <dxi-item [options]="{
+                text: 'Нет',
+                type: 'default',
+                stylingMode: 'contained',
+                onClick: closeDialog
+              }"
+              location="after"
+              widget="dxButton"
+    ></dxi-item>
+  </dx-toolbar>
+</div>

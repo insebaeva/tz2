@@ -1,0 +1,28 @@
+@import "../../../../../../../assets/styles/mixin";
+
+:host {
+  @include backgroundColor;
+  display: flex;
+  flex-direction: column;
+
+  .dx-fieldset {
+    @include dxFieldSet;
+    margin: 0;
+
+    .dx-field {
+      @include dxField;
+    }
+
+    .dx-button {
+      padding: 8px;
+      background-color: transparent;
+      border: none;
+
+      ::ng-deep .dx-button-mode-contained.dx-button-default {
+        background-color: black;
+      }
+    }
+  }
+
+}
+

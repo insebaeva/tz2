@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Hero} from 'src/app/entities/interfaces/hero.interface'
+import {Hero} from 'src/app/entities/modules/main/entities/interfaces/hero.interface'
 import {BehaviorSubject, lastValueFrom, Observable} from "rxjs";
-import {HeroEnum} from "../enums/hero.enum";
+import {HeroEnum} from "../modules/main/entities/enums/hero.enum";
 import {IdName} from "../interfaces/id-name.interface";
-import {AppLib} from "../libs/app.lib";
+import {MainLib} from "../modules/main/entities/libs/main.lib";
 
 @Injectable({
   providedIn: "root"
@@ -14,7 +14,7 @@ export class AppService {
   private _capabilities$$: BehaviorSubject<IdName[]> = new BehaviorSubject<IdName[]>([]);
   public capabilities$: Observable<IdName[]> = this._capabilities$$.asObservable();
 
-  private _selectedHero$$: BehaviorSubject<Hero> = new BehaviorSubject<Hero>(AppLib.defaultHero);
+  private _selectedHero$$: BehaviorSubject<Hero> = new BehaviorSubject<Hero>(MainLib.defaultHero);
   public selectedHero$: Observable<Hero> = this._selectedHero$$.asObservable();
 
   private _heroes$$: BehaviorSubject<Hero[]> = new BehaviorSubject<Hero[]>([]);
@@ -24,7 +24,7 @@ export class AppService {
   public filteredHeroes$: Observable<Hero[]> = this._filteredHeroes$$.asObservable();
 
   constructor(
-    private _http: HttpClient
+    private readonly _http: HttpClient
   ) {
   }
 
@@ -97,7 +97,7 @@ export class AppService {
   /**
    * Получение героев с сервера
    */
-  public getHeroes(): void {
+  public loadHeroes(): void {
     lastValueFrom(this._http.get<Hero[]>('http://127.0.0.1:3000/items'))
       .then((heroes: Hero[]) => {
         this._heroes$$.next(heroes);

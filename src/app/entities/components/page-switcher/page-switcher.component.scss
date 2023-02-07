@@ -1,0 +1,28 @@
+@import "../../../../assets/styles/mixin";
+
+:host {
+  display: flex;
+  height: 10%;
+  width: 100%;
+  margin: 0 0 20px 0;
+
+  .wrapper {
+    width: 100%;
+    @include backgroundColor;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    dx-button {
+      width: 50%;
+      height: 50%;
+      background-color: white;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      border-radius: 5px;
+      border-color: white;
+    }
+  }
+}

@@ -1,0 +1,89 @@
+@import "../../../../../../../assets/styles/mixin";
+
+:host {
+  @include backgroundColor;
+
+  .dx-fieldset {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 10px 10px;
+    width: 100%;
+    height: 100%;
+
+    .dx-fieldset-filter {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 50%;
+
+      .dx-field {
+        padding: 5px 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .dx-field-label-level {
+        width: 40%;
+        padding: 8px 15px 9px 0;
+      }
+
+      .dx-field-level-content {
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+
+        .from {
+          padding: 8px 7px 9px 0;
+          margin: 0;
+        }
+
+        .before {
+          padding: 8px 7px 9px 8px;
+          margin: 0 0 0 5px;
+        }
+
+      }
+
+      .dx-field-value {
+        width: 70%;
+      }
+    }
+
+    .dx-fieldset-filter-sort {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 50%;
+      padding: 0 0 0 30px;
+
+      .dx-field {
+        padding: 5px 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .dx-field-level {
+        padding: 5px 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+
+        .dx-field-label {
+          width: 70%;
+        }
+
+        .dx-field-value {
+          width: 30%;
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+}

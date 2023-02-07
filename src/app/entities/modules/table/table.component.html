@@ -1,0 +1,120 @@
+<div class="wrapper">
+  <dx-data-grid [dataSource]="heroes"
+                [showBorders]="true"
+                keyExpr="id"
+                id="gridContainer">
+    <dxo-filter-row [visible]="true"
+    ></dxo-filter-row>
+    <dxo-sorting mode="single"
+    ></dxo-sorting>
+    <dxo-header-filter [visible]="true"
+    ></dxo-header-filter>
+    <dxi-column [allowSorting]="false"
+                [allowHeaderFiltering]="false"
+                [filterOperations]="['startswith']"
+                [dataField]="HERO.NAME"
+                dataType="string"
+                caption="Имя"
+                alignment="center"
+    ></dxi-column>
+    <dxi-column [allowSorting]="false"
+                [allowFiltering]="false"
+                [dataField]="HERO.POWER"
+                caption="Сила"
+                alignment="center"
+    ></dxi-column>
+    <dxi-column [allowSorting]="false"
+                [allowHeaderFiltering]="true"
+                [allowFiltering]="false"
+                [dataField]="HERO.CAPABILITY_IDS"
+                editCellTemplate="tagBoxEditor"
+                cellTemplate="capabilitiesTemplate"
+                dataType="string"
+                caption="Способности"
+                alignment="center">
+      <ng-container *dxTemplate="let row of 'capabilitiesTemplate'">
+        <ng-container *ngFor="let id of row.data.capabilityIds">
+          {{ getCapabilityNameById(id) }}
+        </ng-container>
+      </ng-container>
+      <dxo-lookup [dataSource]="capabilities"
+                  displayExpr="name"
+                  valueExpr="id"
+      ></dxo-lookup>
+    </dxi-column>
+    <dxi-column [allowSorting]="true"
+                [allowHeaderFiltering]="false"
+                [filterOperations]="['<=', '>=']"
+                [dataField]="HERO.LEVEL"
+                sortOrder="desc"
+                dataType="numeric"
+                caption="Начальный уровень"
+                alignment="center"
+    ></dxi-column>
+    <dxi-column [width]="100"
+                caption="Редактировать"
+                alignment="center"
+                cellTemplate="editActionTemplate">
+      <ng-container *dxTemplate="let row of 'editActionTemplate'">
+        <dx-button (onClick)="editHero(row.data)"
+                   type="default"
+                   icon="edit"
+                   hint="Редактировать"
+                   stylingMode="text"
+        ></dx-button>
+      </ng-container>
+    </dxi-column>
+    <dxi-column [width]="100"
+                caption="Просмотр"
+                alignment="center"
+                cellTemplate="showActionTemplate">
+      <ng-container *dxTemplate="let row of 'showActionTemplate'">
+        <dx-button (onClick)="showHero(row.data)"
+                   type="default"
+                   icon="info"
+                   hint="Просмотреть"
+                   stylingMode="text"
+        ></dx-button>
+      </ng-container>
+    </dxi-column>
+    <dxi-column [width]="100"
+                caption="Удалить"
+                alignment="center"
+                cellTemplate="deleteActionTemplate">
+      <ng-container *dxTemplate="let row of 'deleteActionTemplate'">
+        <dx-button (onClick)="showDeleteConfirmationHero(row.data)"
+                   type="default"
+                   icon="trash"
+                   hint="Удалить"
+                   stylingMode="text"
+        ></dx-button>
+      </ng-container>
+    </dxi-column>
+  </dx-data-grid>
+  <dx-popup [width]="500"
+            [height]="500"
+            [showTitle]="true"
+            [dragEnabled]="false"
+            [hideOnOutsideClick]="true"
+            [showCloseButton]="true"
+            [title]="titleEdit"
+            [(visible)]="visibleEditDialog"
+            container=".dx-viewport">
+    <hero-edit-dialog [dialogMode]="editDialogMode"
+                      (close)="closeEditDialog()"
+    ></hero-edit-dialog>
+  </dx-popup>
+  <dx-popup [showTitle]="false"
+            [width]="300"
+            [height]="130"
+            [(visible)]="visibleDeleteDialog"
+            [hideOnOutsideClick]="false"
+            [showCloseButton]="false"
+            container=".dx-viewport">
+    <delete-confirmation-dialog [text]="titleConfirmationDeletion"
+                               (delete)="deleteHero()"
+                               (close)="closeDeleteDialog()"
+    ></delete-confirmation-dialog>
+  </dx-popup>
+</div>
+
